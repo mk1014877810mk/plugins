@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>plugins案例</title>
+  <link rel="stylesheet" href="./plugins.css">
+  <style>
+    .box {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    惦记我
+  </div>
+  <script src="./plugins.js"></script>
+  <script>
+    document.querySelector('.box').onclick = function () {
+      new mkPlugins.modelPlugins({
+        width: 400,
+        height: 200,
+        title: '我是标题',
+        content: '我是第一个',
+        successHandle: successHandle,
+        cancelHandle: cancelHandle
+      }).setModel();
+    }
+
+
+    function successHandle() {
+      new mkPlugins.modelPlugins({
+        width: '30%',
+        height: '20%',
+        title: '我是标题1',
+        content: '我是第二个',
+        sure: '确定1',
+        cancel: '取消1',
+        successHandle: successHandle1,
+        cancelHandle: cancelHandle
+      }).setModel();
+    }
+    function successHandle1() {
+      console.log('点击了确定');
+    }
+    function cancelHandle() {
+      console.log('点击了取消');
+    }
+  </script>
+</body>
+
+</html>
